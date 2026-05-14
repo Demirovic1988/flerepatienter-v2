@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://flerepatienter.dk/sitemap.xml
+Sitemap: https://flerepatienter.dk/sitemap-index.xml

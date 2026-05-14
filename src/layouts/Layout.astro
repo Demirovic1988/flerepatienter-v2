@@ -11,7 +11,7 @@ const {
   description = 'Få flere patienter til din tandlægeklinik. Elvis Demirovic hjælper tandlæger med at blive synlige online og fylde kalenderen med nye bookinger.',
 } = Astro.props;
 
-const canonicalURL = 'https://flerepatienter.dk';
+const canonicalURL = new URL(Astro.url.pathname, 'https://flerepatienter.dk').href;
 
 const schema = {
   '@context': 'https://schema.org',
