@@ -69,38 +69,77 @@ const schema = {
     <!-- Structured data -->
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G3L4LZCEP5"></script>
+    <!-- Tracking (kun ved cookie-samtykke) -->
     <script>
-      (window as any).dataLayer = (window as any).dataLayer || [];
-      function gtag(...args: any[]) { (window as any).dataLayer.push(args); }
-      gtag('js', new Date());
-      gtag('config', 'G-G3L4LZCEP5');
-    </script>
+      function loadTracking() {
+        // Google Analytics
+        const ga = document.createElement('script');
+        ga.async = true;
+        ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-G3L4LZCEP5';
+        document.head.appendChild(ga);
+        (window as any).dataLayer = (window as any).dataLayer || [];
+        function gtag(...args: any[]) { (window as any).dataLayer.push(args); }
+        gtag('js', new Date());
+        gtag('config', 'G-G3L4LZCEP5');
 
-    <!-- Meta Pixel -->
-    <script>
-      (function(f: Window & typeof globalThis, b: Document, e: string, v: string) {
-        if ((f as any).fbq) return;
-        const n: any = (f as any).fbq = function() {
-          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
-        };
-        if (!(f as any)._fbq) (f as any)._fbq = n;
-        n.push = n; n.loaded = true; n.version = '2.0'; n.queue = [];
-        const t = b.createElement(e) as HTMLScriptElement;
-        t.async = true; t.src = v;
-        const s = b.getElementsByTagName(e)[0];
-        s.parentNode!.insertBefore(t, s);
-      })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-      (window as any).fbq('init', '1543349950714721');
-      (window as any).fbq('track', 'PageView');
+        // Meta Pixel
+        (function(f: any, b: Document, e: string, v: string) {
+          if (f.fbq) return;
+          const n: any = f.fbq = function() { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+          if (!f._fbq) f._fbq = n;
+          n.push = n; n.loaded = true; n.version = '2.0'; n.queue = [];
+          const t = b.createElement(e) as HTMLScriptElement;
+          t.async = true; t.src = v;
+          b.head.appendChild(t);
+        })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+        (window as any).fbq('init', '1543349950714721');
+        (window as any).fbq('track', 'PageView');
+      }
+
+      if (localStorage.getItem('cookie_consent') === 'accepted') {
+        loadTracking();
+      }
+
+      (window as any).__loadTracking = loadTracking;
     </script>
-    <noscript>
-      <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1543349950714721&ev=PageView&noscript=1" />
-    </noscript>
   </head>
   <body>
     <slot />
+
+    <!-- Cookie banner -->
+    <div id="cookie-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:9999; padding:1.25rem 1.5rem; background:#0D1F3C; border-top:1px solid rgba(255,255,255,0.1);">
+      <div style="max-width:72rem; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem;">
+        <p style="color:rgba(255,255,255,0.8); font-size:0.9rem; margin:0; max-width:600px; line-height:1.5;">
+          Vi bruger cookies til statistik og markedsføring for at forbedre din oplevelse.
+          Læs mere i vores <a href="/privatlivspolitik" style="color:#F97316; text-decoration:underline;">privatlivspolitik</a>.
+        </p>
+        <div style="display:flex; gap:0.75rem; flex-shrink:0;">
+          <button id="cookie-decline" style="background:transparent; border:1px solid rgba(255,255,255,0.25); color:rgba(255,255,255,0.6); font-size:0.875rem; font-weight:600; padding:0.6rem 1.25rem; border-radius:9999px; cursor:pointer;">
+            Kun nødvendige
+          </button>
+          <button id="cookie-accept" style="background:#F97316; border:none; color:#fff; font-size:0.875rem; font-weight:700; padding:0.6rem 1.5rem; border-radius:9999px; cursor:pointer;">
+            Acceptér alle
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const banner = document.getElementById('cookie-banner');
+      const consent = localStorage.getItem('cookie_consent');
+      if (!consent && banner) banner.style.display = 'block';
+
+      document.getElementById('cookie-accept')?.addEventListener('click', () => {
+        localStorage.setItem('cookie_consent', 'accepted');
+        if (banner) banner.style.display = 'none';
+        (window as any).__loadTracking?.();
+      });
+
+      document.getElementById('cookie-decline')?.addEventListener('click', () => {
+        localStorage.setItem('cookie_consent', 'declined');
+        if (banner) banner.style.display = 'none';
+      });
+    </script>
 
     <!-- Scroll reveal -->
     <script>
