@@ -69,6 +69,15 @@ const schema = {
     <!-- Structured data -->
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G3L4LZCEP5"></script>
+    <script>
+      (window as any).dataLayer = (window as any).dataLayer || [];
+      function gtag(...args: any[]) { (window as any).dataLayer.push(args); }
+      gtag('js', new Date());
+      gtag('config', 'G-G3L4LZCEP5');
+    </script>
+
     <!-- Meta Pixel -->
     <script>
       (function(f: Window & typeof globalThis, b: Document, e: string, v: string) {
