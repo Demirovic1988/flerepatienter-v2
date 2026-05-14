@@ -1,0 +1,42 @@
+---
+const cards = [
+  {
+    icon: `<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>`,
+    title: 'Få flere henvendelser fra nye patienter',
+    text:
+      'Vi tiltrækker de rigtige patienter til din klinik – folk der aktivt søger en tandlæge i dit område og er klar til at booke.',
+  },
+  {
+    icon: `<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>`,
+    title: 'Du er ikke bundet – vi leverer resultater',
+    text:
+      'Ingen lange kontrakter. Vi beholder dig fordi vi skaber resultater, ikke fordi du er låst fast. Simpelt og fair.',
+  },
+  {
+    icon: `<path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/>`,
+    title: 'Vi ved, hvad der virker for tandlæger',
+    text:
+      'Vi arbejder udelukkende med tandlæger og kender patientrejsen indefra og ud. Ingen generisk marketing – kun det der konverterer.',
+  },
+];
+---
+
+<section class="py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-5">
+
+    <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+      {cards.map((card, i) => (
+        <div class={`reveal reveal-delay-${i + 1} group bg-[#F8FAFC] hover:bg-white border border-gray-100 hover:border-teal/30 rounded-2xl p-8 transition-all duration-300 hover:shadow-lg hover:-translate-y-1`}>
+          <div class="w-12 h-12 rounded-xl bg-teal/10 flex items-center justify-center mb-6 group-hover:bg-teal/20 transition-colors duration-300">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0EA5A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <Fragment set:html={card.icon} />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-navy mb-3 leading-snug">{card.title}</h3>
+          <p class="text-muted text-[15px] leading-relaxed">{card.text}</p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

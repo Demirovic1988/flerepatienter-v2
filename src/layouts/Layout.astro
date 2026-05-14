@@ -1,0 +1,92 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Flerepatienter.dk – Tandlæge Markedsføring der Virker',
+  description = 'Få flere patienter til din tandlægeklinik. Elvis Demirovic hjælper tandlæger med at blive synlige online og fylde kalenderen med nye bookinger.',
+} = Astro.props;
+
+const canonicalURL = 'https://flerepatienter.dk';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'Flerepatienter.dk',
+  description: 'Markedsføring for tandlæger – flere synlige, flere bookinger.',
+  url: canonicalURL,
+  telephone: '+4571900650',
+  email: 'jatak@flerepatienter.dk',
+  founder: {
+    '@type': 'Person',
+    name: 'Elvis Demirovic',
+  },
+  areaServed: 'DK',
+  inLanguage: 'da',
+  serviceType: 'Tandlæge markedsføring',
+};
+---
+
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="da_DK" />
+    <meta property="og:site_name" content="Flerepatienter.dk" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Inter font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  </head>
+  <body>
+    <slot />
+
+    <!-- Scroll reveal -->
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>

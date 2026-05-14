@@ -1,0 +1,71 @@
+---
+const CALENDLY = 'https://calendly.com/jatak-flerepatienter/30min';
+---
+
+<section
+  id="start-her"
+  class="relative min-h-screen flex items-center bg-gradient-to-br from-[#EFF6F6] via-[#F8FAFC] to-white pt-24 pb-20 overflow-hidden"
+>
+  <!-- Subtle background decoration -->
+  <div aria-hidden="true" class="absolute inset-0 pointer-events-none">
+    <div class="absolute top-1/4 right-0 w-[600px] h-[600px] rounded-full bg-teal/5 blur-3xl translate-x-1/3"></div>
+    <div class="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-navy/4 blur-3xl -translate-x-1/4"></div>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-5 relative z-10">
+    <div class="max-w-3xl">
+
+      <!-- Badge -->
+      <div class="reveal inline-flex items-center gap-2 bg-teal/10 text-teal text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
+        <span class="w-2 h-2 rounded-full bg-teal animate-pulse"></span>
+        Specialiseret i tandlæge markedsføring
+      </div>
+
+      <!-- H1 -->
+      <h1 class="reveal reveal-delay-1 text-5xl md:text-6xl lg:text-7xl font-extrabold text-navy leading-[1.1] mb-6">
+        Få <span class="text-teal">flere patienter</span><br />
+        til din tandlægeklinik
+      </h1>
+
+      <!-- Underrubrik -->
+      <p class="reveal reveal-delay-2 text-xl md:text-2xl text-muted leading-relaxed mb-10 max-w-2xl">
+        Jeg sørger for, at der ikke er huller i rejsen. I bliver synlige, I
+        får besøg – og vigtigst af alt: <strong class="text-text font-semibold">I får bookinger.</strong>
+      </p>
+
+      <!-- CTAs -->
+      <div class="reveal reveal-delay-3 flex flex-col sm:flex-row gap-4">
+        <a
+          href={CALENDLY}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-2 bg-teal hover:bg-teal-dark text-white font-bold text-lg px-8 py-4 rounded-full transition-all duration-200 shadow-lg shadow-teal/25 hover:shadow-teal/40 hover:-translate-y-0.5"
+        >
+          Book gratis samtale
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a
+          href="#de-skjulte-huller"
+          class="inline-flex items-center justify-center gap-2 border-2 border-navy/20 text-navy font-semibold text-lg px-8 py-4 rounded-full hover:border-teal hover:text-teal transition-all duration-200"
+        >
+          Se hvordan vi hjælper tandlæger
+        </a>
+      </div>
+
+      <!-- Social proof -->
+      <div class="reveal mt-12 flex items-center gap-4 text-sm text-muted">
+        <div class="flex -space-x-2" aria-hidden="true">
+          {[...Array(4)].map((_, i) => (
+            <div class={`w-8 h-8 rounded-full border-2 border-white flex items-center justify-center text-xs font-bold text-white ${['bg-teal', 'bg-navy', 'bg-teal-dark', 'bg-navy-light'][i]}`}>
+              {['M', 'J', 'A', 'T'][i]}
+            </div>
+          ))}
+        </div>
+        <span>Betroet af tandlæger i hele Danmark</span>
+      </div>
+
+    </div>
+  </div>
+</section>

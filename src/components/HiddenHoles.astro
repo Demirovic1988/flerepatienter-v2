@@ -1,0 +1,92 @@
+---
+const holes = [
+  {
+    number: '01',
+    title: 'De finder dig ikke',
+    text: 'Nye patienter søger tandlæge online – men din klinik dukker ikke op. Uden en stærk digital tilstedeværelse mister du patienter til konkurrenter hver eneste dag, uden at vide det.',
+  },
+  {
+    number: '02',
+    title: 'De stoler ikke på dig endnu',
+    text: 'Selv hvis de finder dig, har de brug for at stole på dig. Manglende anmeldelser, et forældet website eller en uklar hjemmeside sender dem videre til næste klinik.',
+  },
+  {
+    number: '03',
+    title: 'De booker ikke',
+    text: 'Den største fælde: de ville gerne booke, men det er for besværligt. En sms de aldrig svarede på, en hjemmeside der ikke virker på mobil – og de ringer aldrig tilbage.',
+  },
+];
+---
+
+<section id="de-skjulte-huller" class="py-24 bg-section">
+  <div class="max-w-6xl mx-auto px-5">
+
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Tekst-side -->
+      <div>
+        <div class="reveal inline-block bg-navy/8 text-navy text-xs font-bold tracking-widest uppercase px-3 py-1.5 rounded-full mb-5">
+          De skjulte huller
+        </div>
+
+        <h2 class="reveal reveal-delay-1 text-4xl md:text-5xl font-extrabold text-navy mb-6">
+          Derfor mister du patienter –<br />
+          <span class="text-teal">uden at vide det</span>
+        </h2>
+
+        <p class="reveal reveal-delay-2 text-lg text-muted mb-10 leading-relaxed">
+          De fleste tandlæger tror, de mister patienter til en konkurrent med en lavere pris.
+          Virkeligheden er en anden: du mister dem langt tidligere – på tre tidspunkter i
+          patientrejsen, som de fleste aldrig tænker over.
+        </p>
+
+        <div class="space-y-6">
+          {holes.map((hole, i) => (
+            <div class={`reveal reveal-delay-${i + 1} flex gap-5 group`}>
+              <div class="shrink-0 w-12 h-12 rounded-xl bg-navy text-white flex items-center justify-center text-sm font-bold group-hover:bg-teal transition-colors duration-300">
+                {hole.number}
+              </div>
+              <div>
+                <h3 class="font-bold text-navy text-lg mb-1">{hole.title}</h3>
+                <p class="text-muted text-[15px] leading-relaxed">{hole.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <a
+          href="#moed-elvis"
+          class="reveal mt-10 inline-flex items-center gap-2 text-teal font-semibold hover:gap-3 transition-all duration-200"
+        >
+          Lær hvordan vi løser det
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Visual side -->
+      <div class="reveal reveal-delay-2 hidden lg:block">
+        <div class="relative">
+          <div class="aspect-square rounded-3xl bg-gradient-to-br from-navy to-navy-light flex items-center justify-center overflow-hidden shadow-2xl">
+            <!-- Placeholder illustration -->
+            <div class="text-center px-10">
+              <div class="text-8xl mb-6" aria-hidden="true">🦷</div>
+              <p class="text-white/60 text-sm font-medium">Illustration kommer her</p>
+            </div>
+          </div>
+          <!-- Floating stat card -->
+          <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-5 border border-gray-100">
+            <div class="text-3xl font-extrabold text-teal mb-1">+73%</div>
+            <div class="text-xs text-muted font-medium">Flere bookinger<br />i gennemsnit</div>
+          </div>
+          <div class="absolute -top-6 -right-6 bg-white rounded-2xl shadow-xl p-5 border border-gray-100">
+            <div class="text-3xl font-extrabold text-navy mb-1">3×</div>
+            <div class="text-xs text-muted font-medium">Mere synlighed<br />i Google</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

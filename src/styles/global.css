@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy:       #1B3A5C;
+  --color-navy-light: #274f7a;
+  --color-teal:       #0EA5A0;
+  --color-teal-dark:  #0c8f8a;
+  --color-bg:         #F8FAFC;
+  --color-section:    #EFF6F6;
+  --color-text:       #1E293B;
+  --color-muted:      #64748B;
+
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    line-height: 1.7;
+  }
+
+  h1, h2, h3, h4 {
+    line-height: 1.2;
+    color: var(--color-navy);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-teal);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.12s; }
+.reveal-delay-2 { transition-delay: 0.24s; }
+.reveal-delay-3 { transition-delay: 0.36s; }
