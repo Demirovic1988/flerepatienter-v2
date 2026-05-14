@@ -68,6 +68,27 @@ const schema = {
 
     <!-- Structured data -->
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+    <!-- Meta Pixel -->
+    <script>
+      (function(f: Window & typeof globalThis, b: Document, e: string, v: string) {
+        if ((f as any).fbq) return;
+        const n: any = (f as any).fbq = function() {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+        };
+        if (!(f as any)._fbq) (f as any)._fbq = n;
+        n.push = n; n.loaded = true; n.version = '2.0'; n.queue = [];
+        const t = b.createElement(e) as HTMLScriptElement;
+        t.async = true; t.src = v;
+        const s = b.getElementsByTagName(e)[0];
+        s.parentNode!.insertBefore(t, s);
+      })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+      (window as any).fbq('init', '1543349950714721');
+      (window as any).fbq('track', 'PageView');
+    </script>
+    <noscript>
+      <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1543349950714721&ev=PageView&noscript=1" />
+    </noscript>
   </head>
   <body>
     <slot />
