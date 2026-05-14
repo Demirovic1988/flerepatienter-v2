@@ -1,0 +1,150 @@
+---
+const testimonials = [
+  {
+    name: 'Mia Andersen',
+    title: 'Indehaver, Tandklinik Mia Andersen',
+    location: 'Aarhus',
+    text: 'Vi havde prøvet andre bureauer uden held. Elvis forstod vores klinik fra dag ét og leverede det vi aldrig selv kunne finde ud af. Inden for 3 måneder var vi fuldt bookede frem.',
+    result: '+34 nye patienter på 90 dage',
+    stars: 5,
+    initials: 'MA',
+    color: 'bg-[#F97316]',
+  },
+  {
+    name: 'Kasper Nørgaard',
+    title: 'Klinikchef, Nørgaard Dental',
+    location: 'København NV',
+    text: 'Jeg var skeptisk i starten – vi er en lille klinik og ikke vant til at bruge penge på markedsføring. Men Elvis viste mig præcist hvad pengene gik til. Afkastet har været tydeligt.',
+    result: '3× flere henvendelser via Google',
+    stars: 5,
+    initials: 'KN',
+    color: 'bg-navy',
+  },
+  {
+    name: 'Sara Vestergaard',
+    title: 'Tandlæge & ejer, Smileklinikken',
+    location: 'Odense',
+    text: 'Det bedste ved samarbejdet er gennemsigtigheden. Jeg ved altid hvad der sker, og Elvis svarer samme dag. Vores Google-anmeldelser er gået fra 12 til 87 på under et år.',
+    result: 'Fra 12 → 87 Google-anmeldelser',
+    stars: 5,
+    initials: 'SV',
+    color: 'bg-[#F97316]',
+  },
+];
+
+const cases = [
+  {
+    klinik: 'Tandklinik i Aarhus',
+    udfordring: 'Klinikken havde en god beliggenhed men viste sig ikke i lokale søgninger. De mistede patienter til konkurrenter der lå længere væk.',
+    loesning: 'Google Ads, lokal SEO-optimering og en målrettet anmeldelseskampagne.',
+    resultater: [
+      { tal: '+41%', label: 'flere bookinger' },
+      { tal: '4,9★', label: 'Google-rating' },
+      { tal: '2 mdr.', label: 'til fuld kalender' },
+    ],
+  },
+  {
+    klinik: 'Klinik i København',
+    udfordring: 'Ny klinik uden online tilstedeværelse. Ejeren brugte tid og penge på Meta-annoncer uden at se resultater.',
+    loesning: 'Komplet opsætning: landingsside, Meta-kampagne med præcis målretning og automatisk follow-up på leads.',
+    resultater: [
+      { tal: '67', label: 'leads på 30 dage' },
+      { tal: '38%', label: 'konverteringsrate' },
+      { tal: '4,2×', label: 'ROAS på annoncer' },
+    ],
+  },
+];
+---
+
+<section class="py-24 bg-white">
+  <div class="max-w-6xl mx-auto px-5">
+
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <div class="reveal inline-block bg-[#F97316]/10 text-[#F97316] text-xs font-bold tracking-widest uppercase px-3 py-1.5 rounded-full mb-5">
+        Resultater der taler
+      </div>
+      <h2 class="reveal reveal-delay-1 text-4xl md:text-5xl font-extrabold text-navy mb-4">
+        Hvad klinikkerne siger
+      </h2>
+      <p class="reveal reveal-delay-2 text-muted text-lg max-w-xl mx-auto">
+        Rigtige resultater fra rigtige tandlæger – ikke løfter.
+      </p>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="grid md:grid-cols-3 gap-6 mb-20">
+      {testimonials.map((t, i) => (
+        <div class={`reveal reveal-delay-${i + 1} bg-[#F8FAFC] rounded-2xl p-7 border border-transparent hover:border-[#F97316]/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg flex flex-col`}>
+
+          <!-- Stjerner -->
+          <div class="flex gap-1 mb-4">
+            {Array(t.stars).fill(null).map(() => (
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#F97316" aria-hidden="true">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            ))}
+          </div>
+
+          <!-- Citat -->
+          <p class="text-text text-[15px] leading-relaxed mb-5 flex-1">
+            "{t.text}"
+          </p>
+
+          <!-- Resultat badge -->
+          <div class="bg-[#FFF7F0] border border-[#F97316]/20 rounded-xl px-4 py-2 mb-5 text-[13px] font-bold text-[#F97316]">
+            {t.result}
+          </div>
+
+          <!-- Person -->
+          <div class="flex items-center gap-3">
+            <div class={`w-10 h-10 rounded-full ${t.color} flex items-center justify-center text-white text-sm font-bold shrink-0`}>
+              {t.initials}
+            </div>
+            <div>
+              <div class="font-semibold text-navy text-sm">{t.name}</div>
+              <div class="text-muted text-xs">{t.title} · {t.location}</div>
+            </div>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+    <!-- Cases -->
+    <div class="text-center mb-12">
+      <h3 class="reveal text-3xl md:text-4xl font-extrabold text-navy mb-3">Cases</h3>
+      <p class="reveal reveal-delay-1 text-muted text-lg">Sådan ser et typisk forløb ud i tal.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      {cases.map((c, i) => (
+        <div class={`reveal reveal-delay-${i + 1} bg-navy rounded-2xl p-8 text-white`}>
+
+          <div class="text-[#F97316] text-xs font-bold tracking-widest uppercase mb-4">{c.klinik}</div>
+
+          <div class="mb-4">
+            <div class="text-white/50 text-xs font-semibold uppercase tracking-wider mb-1">Udfordring</div>
+            <p class="text-white/80 text-sm leading-relaxed">{c.udfordring}</p>
+          </div>
+
+          <div class="mb-6">
+            <div class="text-white/50 text-xs font-semibold uppercase tracking-wider mb-1">Løsning</div>
+            <p class="text-white/80 text-sm leading-relaxed">{c.loesning}</p>
+          </div>
+
+          <div class="grid grid-cols-3 gap-4 border-t border-white/10 pt-6">
+            {c.resultater.map((r) => (
+              <div class="text-center">
+                <div class="text-2xl font-extrabold text-[#F97316]">{r.tal}</div>
+                <div class="text-white/50 text-xs mt-1">{r.label}</div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
