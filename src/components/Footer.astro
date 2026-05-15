@@ -2,23 +2,36 @@
 const year = new Date().getFullYear();
 ---
 
-<footer class="bg-[#111827] text-white/50 py-10">
-  <div class="max-w-6xl mx-auto px-5 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+<footer class="bg-ink text-white/60 py-12">
+  <div class="max-w-6xl mx-auto px-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
 
-    <!-- Logo -->
-    <a href="/" aria-label="Flerepatienter.dk – hjem">
-      <img src="/images/logo.webp" alt="Flerepatienter.dk" width="140" height="40" class="h-8 w-auto brightness-0 invert" />
-    </a>
+    <!-- Wordmark + tagline -->
+    <div>
+      <a href="/" aria-label="Flerepatienter.dk – forside" class="wordmark on-dark text-xl">
+        <span>Flere</span><span class="it">patienter</span><span>.dk</span>
+      </a>
+      <p class="mt-2 text-xs text-white/40 italic" style="font-family: var(--font-display);">
+        Vi finder hullerne.
+      </p>
+    </div>
 
     <!-- Links -->
-    <nav aria-label="Footer navigation" class="flex items-center gap-6">
-      <a href="/privatlivspolitik" class="hover:text-white transition-colors">
-        Privatlivs- og Cookiepolitik
+    <nav aria-label="Footer navigation" class="flex flex-wrap items-center gap-x-7 gap-y-3 text-sm" style="font-family: var(--font-sans);">
+      <a href="mailto:jatak@flerepatienter.dk" class="hover:text-orange transition-colors">
+        jatak@flerepatienter.dk
+      </a>
+      <a href="tel:+4581530540" class="hover:text-orange transition-colors">
+        +45 81 530 540
+      </a>
+      <a href="/privatlivspolitik" class="hover:text-orange transition-colors">
+        Privatlivspolitik
       </a>
     </nav>
 
     <!-- Copyright -->
-    <p>© {year} Flerepatienter.dk</p>
+    <p class="text-xs text-white/35" style="font-family: var(--font-sans);">
+      © {year} Bunica ApS
+    </p>
 
   </div>
 </footer>

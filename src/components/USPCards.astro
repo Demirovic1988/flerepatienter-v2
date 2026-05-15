@@ -1,40 +1,53 @@
 ---
 const cards = [
   {
-    icon: `<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>`,
-    title: 'Få flere henvendelser fra nye patienter',
+    num: '01',
+    title: 'Diagnose før recept',
     text:
-      'Vi tiltrækker de rigtige patienter til din klinik – folk der aktivt søger en tandlæge i dit område og er klar til at booke.',
+      'Vi anbefaler ikke en løsning før vi har set hullet. Vi kortlægger præcis hvor i patientrejsen klinikken taber penge — fra første visning til booket tid.',
   },
   {
-    icon: `<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>`,
-    title: 'Du er ikke bundet – vi leverer resultater',
+    num: '02',
+    title: 'Ingen bindinger, kun resultater',
     text:
-      'Ingen lange kontrakter. Vi beholder dig fordi vi skaber resultater, ikke fordi du er låst fast. Simpelt og fair.',
+      'Vi binder ikke kunder. Vi gør os fortjent til dem hver måned. Ingen lange kontrakter, ingen overraskelser — kun arbejde der flytter tallene.',
   },
   {
-    icon: `<path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/>`,
-    title: 'Vi ved, hvad der virker for tandlæger',
+    num: '03',
+    title: 'Vi taler tandklinik',
     text:
-      'Vi arbejder udelukkende med tandlæger og kender patientrejsen indefra og ud. Ingen generisk marketing – kun det der konverterer.',
+      'Vi arbejder kun med tandklinikker. Vi kender patientrejsen indefra og kan se mønstre andre overser. Ingen generisk marketing — kun det der konverterer.',
   },
 ];
 ---
 
-<section class="py-20 bg-white">
+<section id="saadan" class="py-24 md:py-32 bg-white">
   <div class="max-w-6xl mx-auto px-5">
 
+    <!-- Section header -->
+    <div class="max-w-2xl mb-14 md:mb-16">
+      <p class="reveal eyebrow mb-4">Sådan arbejder vi</p>
+      <h2 class="reveal reveal-delay-1 text-4xl md:text-5xl font-medium mb-5 tracking-tight">
+        Andre bureauer sælger annoncer.<br />
+        Vi sælger <span class="accent">diagnostik.</span>
+      </h2>
+      <p class="reveal reveal-delay-2 text-lg text-ash leading-relaxed">
+        Inden vi foreslår noget som helst, finder vi hullerne. Tre principper
+        gennemsyrer alt vi gør.
+      </p>
+    </div>
+
+    <!-- Cards -->
     <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
       {cards.map((card, i) => (
-        <div class={`reveal reveal-delay-${i + 1} group bg-[#F8FAFC] hover:bg-white border border-gray-100 hover:border-[#F97316]/30 rounded-2xl p-8 transition-all duration-300 hover:shadow-lg hover:-translate-y-1`}>
-          <div class="w-12 h-12 rounded-xl bg-[#F97316]/10 flex items-center justify-center mb-6 group-hover:bg-[#F97316]/20 transition-colors duration-300">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <Fragment set:html={card.icon} />
-            </svg>
+        <article class={`reveal reveal-delay-${i + 1} group bg-bone hover:bg-cream/40 border border-line/60 rounded-lg p-8 transition-colors duration-300`}>
+          <div class="flex items-baseline gap-3 mb-5">
+            <span class="text-3xl text-orange italic" style="font-family: var(--font-display); font-weight: 500;">{card.num}</span>
+            <span class="h-px flex-1 bg-line"></span>
           </div>
-          <h3 class="text-lg font-bold text-navy mb-3 leading-snug">{card.title}</h3>
-          <p class="text-muted text-[15px] leading-relaxed">{card.text}</p>
-        </div>
+          <h3 class="text-[22px] font-medium text-ink mb-3 leading-snug" style="font-family: var(--font-display); letter-spacing: -0.01em;">{card.title}</h3>
+          <p class="text-ash text-[15px] leading-relaxed">{card.text}</p>
+        </article>
       ))}
     </div>
 

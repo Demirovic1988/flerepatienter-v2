@@ -2,10 +2,10 @@
 const CALENDLY = 'https://calendly.com/jatak-flerepatienter/30min';
 
 const navLinks = [
-  { label: 'Start her',          href: '#start-her' },
-  { label: 'De skjulte huller', href: '#de-skjulte-huller' },
-  { label: 'Mød Elvis',          href: '#moed-elvis' },
-  { label: 'Kontakt',            href: '#kontakt' },
+  { label: 'Hullerne',    href: '#de-skjulte-huller' },
+  { label: 'Sådan virker det', href: '#saadan' },
+  { label: 'Elvis',       href: '#moed-elvis' },
+  { label: 'Cases',       href: '#cases' },
 ];
 ---
 
@@ -13,19 +13,20 @@ const navLinks = [
   id="site-header"
   class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
 >
-  <div class="max-w-6xl mx-auto px-5 flex items-center justify-between h-16 md:h-18">
+  <div class="max-w-6xl mx-auto px-5 flex items-center justify-between h-16 md:h-[72px]">
 
-    <!-- Logo -->
-    <a href="/" aria-label="Flerepatienter.dk – hjem" class="shrink-0">
-      <img src="/images/logo.webp" alt="Flerepatienter.dk" width="160" height="45" class="h-9 w-auto" />
+    <!-- Wordmark (CSS-renderet jf. brandbook §02) -->
+    <a href="/" aria-label="Flerepatienter.dk – forside" class="shrink-0 wordmark text-[22px] md:text-[24px]">
+      <span>Flere</span><span class="it">patienter</span><span>.dk</span>
     </a>
 
     <!-- Desktop nav -->
-    <nav aria-label="Primær navigation" class="hidden md:flex items-center gap-7">
+    <nav aria-label="Primær navigation" class="hidden md:flex items-center gap-8">
       {navLinks.map((link) => (
         <a
           href={link.href}
-          class="text-sm font-medium text-[#475569] hover:text-teal transition-colors duration-200"
+          class="text-sm font-medium text-ash hover:text-orange transition-colors duration-200"
+          style="font-family: var(--font-sans);"
         >
           {link.label}
         </a>
@@ -37,9 +38,9 @@ const navLinks = [
       href={CALENDLY}
       target="_blank"
       rel="noopener noreferrer"
-      class="hidden md:inline-flex items-center gap-2 bg-teal hover:bg-teal-dark text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors duration-200 shadow-sm"
+      class="hidden md:inline-flex btn btn-primary text-sm py-[10px] px-5"
     >
-      Book gratis samtale
+      Book strategisamtale
       <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
         <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
@@ -51,7 +52,7 @@ const navLinks = [
       aria-label="Åbn menu"
       aria-expanded="false"
       aria-controls="mobile-menu"
-      class="md:hidden p-2 rounded-lg text-navy"
+      class="md:hidden p-2 rounded text-ink"
     >
       <svg id="icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -65,13 +66,14 @@ const navLinks = [
   <!-- Mobile menu -->
   <div
     id="mobile-menu"
-    class="hidden md:hidden bg-white border-t border-gray-100 px-5 py-4 flex-col gap-4 shadow-lg"
+    class="hidden md:hidden bg-white border-t border-line px-5 py-5 flex-col gap-1 shadow-sm"
     aria-label="Mobil navigation"
   >
     {navLinks.map((link) => (
       <a
         href={link.href}
-        class="mobile-nav-link text-base font-medium text-navy py-1 hover:text-teal transition-colors"
+        class="mobile-nav-link text-base font-medium text-ink py-2 hover:text-orange transition-colors"
+        style="font-family: var(--font-sans);"
       >
         {link.label}
       </a>
@@ -80,9 +82,9 @@ const navLinks = [
       href={CALENDLY}
       target="_blank"
       rel="noopener noreferrer"
-      class="mt-2 inline-flex justify-center bg-teal hover:bg-teal-dark text-white font-semibold px-5 py-3 rounded-full transition-colors"
+      class="mt-3 btn btn-primary"
     >
-      Book gratis samtale
+      Book strategisamtale
     </a>
   </div>
 </header>
@@ -94,12 +96,12 @@ const navLinks = [
   const iconOpen  = document.getElementById('icon-open')!;
   const iconClose = document.getElementById('icon-close')!;
 
-  // Sticky shadow
+  // Sticky baggrund — kun når der scrolles
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 10) {
-      header.classList.add('bg-white/95', 'backdrop-blur-sm', 'shadow-sm');
+    if (window.scrollY > 8) {
+      header.classList.add('bg-paper/95', 'backdrop-blur-md', 'border-b', 'border-line');
     } else {
-      header.classList.remove('bg-white/95', 'backdrop-blur-sm', 'shadow-sm');
+      header.classList.remove('bg-paper/95', 'backdrop-blur-md', 'border-b', 'border-line');
     }
   }, { passive: true });
 
@@ -112,7 +114,7 @@ const navLinks = [
     iconClose.classList.toggle('hidden', !open);
   });
 
-  // Close on nav link click
+  // Luk ved klik på link
   document.querySelectorAll('.mobile-nav-link').forEach((link) => {
     link.addEventListener('click', () => {
       menu.classList.add('hidden');

@@ -1,148 +1,83 @@
 ---
-const testimonials = [
-  {
-    name: 'Mia Andersen',
-    title: 'Indehaver, Tandklinik Mia Andersen',
-    location: 'Aarhus',
-    text: 'Vi havde prøvet andre bureauer uden held. Elvis forstod vores klinik fra dag ét og leverede det vi aldrig selv kunne finde ud af. Inden for 3 måneder var vi fuldt bookede frem.',
-    result: '+34 nye patienter på 90 dage',
-    stars: 5,
-    initials: 'MA',
-    color: 'bg-[#F97316]',
-  },
-  {
-    name: 'Kasper Nørgaard',
-    title: 'Klinikchef, Nørgaard Dental',
-    location: 'København NV',
-    text: 'Jeg var skeptisk i starten – vi er en lille klinik og ikke vant til at bruge penge på markedsføring. Men Elvis viste mig præcist hvad pengene gik til. Afkastet har været tydeligt.',
-    result: '3× flere henvendelser via Google',
-    stars: 5,
-    initials: 'KN',
-    color: 'bg-navy',
-  },
-  {
-    name: 'Sara Vestergaard',
-    title: 'Tandlæge & ejer, Smileklinikken',
-    location: 'Odense',
-    text: 'Det bedste ved samarbejdet er gennemsigtigheden. Jeg ved altid hvad der sker, og Elvis svarer samme dag. Vores Google-anmeldelser er gået fra 12 til 87 på under et år.',
-    result: 'Fra 12 → 87 Google-anmeldelser',
-    stars: 5,
-    initials: 'SV',
-    color: 'bg-[#F97316]',
-  },
-];
-
+// Per-logo dimensioner tuned så de optisk fylder samme mængde i den hvide chip
+// (kompenserer for at hvert logo har forskelligt aspect-ratio)
 const cases = [
   {
-    klinik: 'Tandklinik i Aarhus',
-    udfordring: 'Klinikken havde en god beliggenhed men viste sig ikke i lokale søgninger. De mistede patienter til konkurrenter der lå længere væk.',
-    loesning: 'Google Ads, lokal SEO-optimering og en målrettet anmeldelseskampagne.',
-    resultater: [
-      { tal: '+41%', label: 'flere bookinger' },
-      { tal: '4,9★', label: 'Google-rating' },
-      { tal: '2 mdr.', label: 'til fuld kalender' },
-    ],
+    eyebrow: 'Poul Staal Klinikkerne · 4 klinikker',
+    title: 'Fra fragmenteret online tilstedeværelse til ét samlet flow.',
+    body:
+      'Jeg overtog markedsføringen for fire klinikker under Poul Staal, byggede et nyt design og en samlet kunderejse fra annonce til booking. I dag kommer der et stabilt flow af de rigtige patienter — ikke prisshoppere, men dem klinikkerne faktisk vil have i stolen.',
+    logo: '/images/logos/Hafniahus.webp',
+    logoAlt: 'Hafniahus Tandlægerne',
+    logoStyle: 'height: 52px; max-width: 220px;',
   },
   {
-    klinik: 'Klinik i København',
-    udfordring: 'Ny klinik uden online tilstedeværelse. Ejeren brugte tid og penge på Meta-annoncer uden at se resultater.',
-    loesning: 'Komplet opsætning: landingsside, Meta-kampagne med præcis målretning og automatisk follow-up på leads.',
-    resultater: [
-      { tal: '67', label: 'leads på 30 dage' },
-      { tal: '38%', label: 'konverteringsrate' },
-      { tal: '4,2×', label: 'ROAS på annoncer' },
-    ],
+    eyebrow: 'Tandhuset Odder',
+    title: 'Fra usynlig på Google til markant lokal placering.',
+    body:
+      'Tandhuset Odder var en stærk klinik — men nye patienter fandt dem ikke online. Efter overtagelsen er den lokale organiske trafik vokset markant, og klinikken rangerer nu højt på de søgninger der faktisk fører til bookinger — ikke kun "tandlæge Odder", men også behandlingerne lokalkonkurrenterne kæmper om.',
+    logo: '/images/logos/Tandhuset-Odder.png',
+    logoAlt: 'Tandhuset Odder',
+    logoStyle: 'height: 64px; max-width: 200px;',
+  },
+  {
+    eyebrow: 'Tandlægerne Banegårdspladsen · smildubare.dk',
+    title: 'Ud af 60-måneders kontrakten — ind i resultater.',
+    body:
+      'Klinikken var låst i en 60-måneders kontrakt med deres tidligere bureau uden at se reel værdi. Jeg overtog konceptet, fik dem fri af bindingerne og byggede en marketing-motor de selv ejer — uden lange aftaler, kun målbart resultat.',
+    logo: '/images/logos/Tandlaegerne-Banegaardspladsen.png',
+    logoAlt: 'Tandlægerne Banegårdspladsen',
+    logoStyle: 'height: 48px; max-width: 220px;',
   },
 ];
 ---
 
-<section class="py-24 bg-white">
+<section id="cases" class="py-24 md:py-32 bg-paper">
   <div class="max-w-6xl mx-auto px-5">
 
     <!-- Header -->
-    <div class="text-center mb-16">
-      <div class="reveal inline-block bg-[#F97316]/10 text-[#F97316] text-xs font-bold tracking-widest uppercase px-3 py-1.5 rounded-full mb-5">
-        Resultater der taler
-      </div>
-      <h2 class="reveal reveal-delay-1 text-4xl md:text-5xl font-extrabold text-navy mb-4">
-        Hvad klinikkerne siger
+    <div class="max-w-2xl mb-14 md:mb-16">
+      <p class="reveal eyebrow mb-4">Sådan ser et forløb ud</p>
+      <h2 class="reveal reveal-delay-1 text-4xl md:text-5xl font-medium mb-5 tracking-tight">
+        Tre klinikker. Tre huller. <span class="accent">Samme metode.</span>
       </h2>
-      <p class="reveal reveal-delay-2 text-muted text-lg max-w-xl mx-auto">
-        Rigtige resultater fra rigtige tandlæger – ikke løfter.
+      <p class="reveal reveal-delay-2 text-lg text-ash leading-relaxed">
+        Jeg taler ikke om abstrakte case studies. Det her er konkrete forløb,
+        hvor jeg har overtaget rodet og bygget noget der virker.
       </p>
     </div>
 
-    <!-- Testimonials -->
-    <div class="grid md:grid-cols-3 gap-6 mb-20">
-      {testimonials.map((t, i) => (
-        <div class={`reveal reveal-delay-${i + 1} bg-[#F8FAFC] rounded-2xl p-7 border border-transparent hover:border-[#F97316]/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg flex flex-col`}>
+    <!-- Cases -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7">
+      {cases.map((c, i) => (
+        <article class={`reveal reveal-delay-${i + 1} bg-ink rounded-lg p-8 md:p-10 text-white flex flex-col`}>
 
-          <!-- Stjerner -->
-          <div class="flex gap-1 mb-4">
-            {Array(t.stars).fill(null).map(() => (
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="#F97316" aria-hidden="true">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-              </svg>
-            ))}
+          <div class="text-orange text-[11px] font-semibold tracking-[0.18em] uppercase mb-6" style="font-family: var(--font-sans);">
+            {c.eyebrow}
           </div>
 
-          <!-- Citat -->
-          <p class="text-text text-[15px] leading-relaxed mb-5 flex-1">
-            "{t.text}"
+          <h3 class="text-2xl md:text-[28px] font-medium text-white mb-5 leading-snug tracking-tight" style="font-family: var(--font-display);">
+            {c.title}
+          </h3>
+
+          <p class="text-white/75 text-[15px] leading-relaxed mb-8 flex-1" style="font-family: var(--font-sans);">
+            {c.body}
           </p>
 
-          <!-- Resultat badge -->
-          <div class="bg-[#FFF7F0] border border-[#F97316]/20 rounded-xl px-4 py-2 mb-5 text-[13px] font-bold text-[#F97316]">
-            {t.result}
-          </div>
-
-          <!-- Person -->
-          <div class="flex items-center gap-3">
-            <div class={`w-10 h-10 rounded-full ${t.color} flex items-center justify-center text-white text-sm font-bold shrink-0`}>
-              {t.initials}
-            </div>
-            <div>
-              <div class="font-semibold text-navy text-sm">{t.name}</div>
-              <div class="text-muted text-xs">{t.title} · {t.location}</div>
+          <!-- Logo-chip — ens dimensioner på tværs af alle kort, optisk balancerede logoer indenfor -->
+          <div class="pt-8 border-t border-white/10">
+            <div class="bg-white rounded-md w-full h-24 flex items-center justify-center px-6" style="box-shadow: 0 1px 2px rgba(0,0,0,0.15);">
+              <img
+                src={c.logo}
+                alt={c.logoAlt}
+                style={c.logoStyle}
+                class="block w-auto object-contain"
+                loading="lazy"
+              />
             </div>
           </div>
 
-        </div>
-      ))}
-    </div>
-
-    <!-- Cases -->
-    <div class="text-center mb-12">
-      <h3 class="reveal text-3xl md:text-4xl font-extrabold text-navy mb-3">Cases</h3>
-      <p class="reveal reveal-delay-1 text-muted text-lg">Sådan ser et typisk forløb ud i tal.</p>
-    </div>
-
-    <div class="grid md:grid-cols-2 gap-8">
-      {cases.map((c, i) => (
-        <div class={`reveal reveal-delay-${i + 1} bg-navy rounded-2xl p-8 text-white`}>
-
-          <div class="text-[#F97316] text-xs font-bold tracking-widest uppercase mb-4">{c.klinik}</div>
-
-          <div class="mb-4">
-            <div class="text-white/50 text-xs font-semibold uppercase tracking-wider mb-1">Udfordring</div>
-            <p class="text-white/80 text-sm leading-relaxed">{c.udfordring}</p>
-          </div>
-
-          <div class="mb-6">
-            <div class="text-white/50 text-xs font-semibold uppercase tracking-wider mb-1">Løsning</div>
-            <p class="text-white/80 text-sm leading-relaxed">{c.loesning}</p>
-          </div>
-
-          <div class="grid grid-cols-3 gap-4 border-t border-white/10 pt-6">
-            {c.resultater.map((r) => (
-              <div class="text-center">
-                <div class="text-2xl font-extrabold text-[#F97316]">{r.tal}</div>
-                <div class="text-white/50 text-xs mt-1">{r.label}</div>
-              </div>
-            ))}
-          </div>
-
-        </div>
+        </article>
       ))}
     </div>
 

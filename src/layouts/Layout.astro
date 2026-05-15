@@ -7,17 +7,18 @@ interface Props {
 }
 
 const {
-  title = 'Flerepatienter.dk – Tandlæge Markedsføring der Virker',
-  description = 'Få flere patienter til din tandlægeklinik. Elvis Demirovic hjælper tandlæger med at blive synlige online og fylde kalenderen med nye bookinger.',
+  title = 'Flerepatienter.dk – Vi finder hullerne i din markedsføring',
+  description = 'Vi hjælper danske tandklinikker med at få flere patienter — ikke ved at producere mere marketing, men ved at finde og lukke hullerne i den, de allerede har.',
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, 'https://flerepatienter.dk').href;
+const ogImage = new URL('/og-image.png', 'https://flerepatienter.dk').href;
 
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
   name: 'Flerepatienter.dk',
-  description: 'Markedsføring for tandlæger – flere synlige, flere bookinger.',
+  description: 'Markedsføring for tandklinikker. Vi finder hullerne mellem klik og booking.',
   url: canonicalURL,
   telephone: '+4581530540',
   email: 'jatak@flerepatienter.dk',
@@ -37,6 +38,7 @@ const schema = {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#D4621A" />
 
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -49,20 +51,27 @@ const schema = {
     <meta property="og:description" content={description} />
     <meta property="og:locale" content="da_DK" />
     <meta property="og:site_name" content="Flerepatienter.dk" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Flerepatienter.dk — Vi finder hullerne i din markedsføring" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-    <!-- Inter font -->
+    <!-- Brandbook §04: Playfair Display (display) + Inter (body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
@@ -72,7 +81,6 @@ const schema = {
     <!-- Tracking (kun ved cookie-samtykke) -->
     <script>
       function loadTracking() {
-        // Google Analytics
         const ga = document.createElement('script');
         ga.async = true;
         ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-G3L4LZCEP5';
@@ -82,7 +90,6 @@ const schema = {
         gtag('js', new Date());
         gtag('config', 'G-G3L4LZCEP5');
 
-        // Meta Pixel
         (function(f: any, b: Document, e: string, v: string) {
           if (f.fbq) return;
           const n: any = f.fbq = function() { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
@@ -106,18 +113,18 @@ const schema = {
   <body>
     <slot />
 
-    <!-- Cookie banner -->
-    <div id="cookie-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:9999; padding:1.25rem 1.5rem; background:#0D1F3C; border-top:1px solid rgba(255,255,255,0.1);">
+    <!-- Cookie banner — Ink baggrund, Patient Orange CTA -->
+    <div id="cookie-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:9999; padding:1.25rem 1.5rem; background:#1A1A1A; border-top:1px solid rgba(255,255,255,0.08);">
       <div style="max-width:72rem; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem;">
-        <p style="color:rgba(255,255,255,0.8); font-size:0.9rem; margin:0; max-width:600px; line-height:1.5;">
+        <p style="color:rgba(255,255,255,0.78); font-size:0.9rem; margin:0; max-width:620px; line-height:1.55; font-family: 'Inter', sans-serif;">
           Vi bruger cookies til statistik og markedsføring for at forbedre din oplevelse.
-          Læs mere i vores <a href="/privatlivspolitik" style="color:#F97316; text-decoration:underline;">privatlivspolitik</a>.
+          Læs mere i vores <a href="/privatlivspolitik" style="color:#D4621A; text-decoration:underline; text-underline-offset:3px;">privatlivspolitik</a>.
         </p>
         <div style="display:flex; gap:0.75rem; flex-shrink:0;">
-          <button id="cookie-decline" style="background:transparent; border:1px solid rgba(255,255,255,0.25); color:rgba(255,255,255,0.6); font-size:0.875rem; font-weight:600; padding:0.6rem 1.25rem; border-radius:9999px; cursor:pointer;">
+          <button id="cookie-decline" style="background:transparent; border:1px solid rgba(255,255,255,0.22); color:rgba(255,255,255,0.7); font-family:'Inter',sans-serif; font-size:0.875rem; font-weight:600; padding:0.65rem 1.25rem; border-radius:4px; cursor:pointer;">
             Kun nødvendige
           </button>
-          <button id="cookie-accept" style="background:#F97316; border:none; color:#fff; font-size:0.875rem; font-weight:700; padding:0.6rem 1.5rem; border-radius:9999px; cursor:pointer;">
+          <button id="cookie-accept" style="background:#D4621A; border:1px solid #D4621A; color:#fff; font-family:'Inter',sans-serif; font-size:0.875rem; font-weight:600; padding:0.65rem 1.5rem; border-radius:4px; cursor:pointer;">
             Acceptér alle
           </button>
         </div>

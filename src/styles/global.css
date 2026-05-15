@@ -1,53 +1,208 @@
 @import "tailwindcss";
 
 @theme {
-  --color-navy:       #0D1F3C;
-  --color-navy-light: #162d56;
-  --color-teal:       #F97316;
-  --color-teal-dark:  #ea6c0a;
-  --color-bg:         #F8FAFC;
-  --color-section:    #FFF7F0;
-  --color-text:       #1E293B;
-  --color-muted:      #64748B;
+  /* Signaturfarve */
+  --color-orange:        #D4621A;
+  --color-orange-deep:   #B5500E;
+  --color-cream:         #FBE8D6;
 
-  --font-sans: "Inter", system-ui, sans-serif;
+  /* Neutrale */
+  --color-ink:           #1A1A1A;
+  --color-ash:           #6B6B6B;
+  --color-line:          #E5E1DC;
+
+  /* Baggrunde */
+  --color-paper:         #FAF7F2;
+  --color-bone:          #F2EDE5;
+
+  /* Status */
+  --color-success:       #2D7A3E;
+  --color-alert:         #B5341E;
+
+  /* Typografi */
+  --font-display:        "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-sans:           "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   body {
-    background-color: var(--color-bg);
-    color: var(--color-text);
+    background-color: var(--color-paper);
+    color: var(--color-ink);
     font-family: var(--font-sans);
-    line-height: 1.7;
+    font-size: 16px;
+    line-height: 1.6;
+    font-feature-settings: "ss01", "cv11";
   }
 
-  h1, h2, h3, h4 {
-    line-height: 1.2;
-    color: var(--color-navy);
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    color: var(--color-ink);
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+  }
+
+  p, li {
+    line-height: 1.65;
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-teal);
+    outline: 2px solid var(--color-orange);
     outline-offset: 3px;
     border-radius: 4px;
+  }
+
+  ::selection {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+  }
+}
+
+@layer components {
+  /* Signaturen: kursiveret + orange ord i hver hero/H1 */
+  .accent {
+    font-style: italic;
+    color: var(--color-orange);
+    font-weight: 500;
+  }
+
+  /* Eyebrow / SMALL CAPS label */
+  .eyebrow {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-orange);
+  }
+
+  .eyebrow-muted {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-ash);
+  }
+
+  /* Knapper — brandbook kap. 07 */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    line-height: 1;
+    padding: 0.9375rem 1.5rem;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease, transform 200ms ease;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .btn-primary {
+    background-color: var(--color-orange);
+    color: #fff;
+    border-color: var(--color-orange);
+  }
+  .btn-primary:hover {
+    background-color: var(--color-orange-deep);
+    border-color: var(--color-orange-deep);
+  }
+
+  .btn-secondary {
+    background-color: var(--color-ink);
+    color: #fff;
+    border-color: var(--color-ink);
+  }
+  .btn-secondary:hover {
+    background-color: #2c2c2c;
+    border-color: #2c2c2c;
+  }
+
+  .btn-ghost {
+    background-color: transparent;
+    color: var(--color-orange);
+    border-color: var(--color-orange);
+  }
+  .btn-ghost:hover {
+    background-color: var(--color-cream);
+    color: var(--color-orange-deep);
+    border-color: var(--color-orange-deep);
+  }
+
+  /* Brand wordmark — CSS-renderet logo (jf. brandbook side 11) */
+  .wordmark {
+    display: inline-flex;
+    align-items: baseline;
+    font-family: var(--font-display);
+    font-weight: 500;
+    color: var(--color-ink);
+    letter-spacing: -0.01em;
+    line-height: 1;
+  }
+  .wordmark .it {
+    font-style: italic;
+    color: var(--color-orange);
+    font-weight: 500;
+  }
+  .wordmark.on-dark { color: #fff; }
+  .wordmark.on-dark .it { color: #E8915B; }
+
+  /* Konsistent friareal/typografi-rule */
+  .rule {
+    display: block;
+    width: 56px;
+    height: 2px;
+    background-color: var(--color-orange);
+    border: 0;
+    margin: 0;
+  }
+
+  /* Citat-blok i brandbook-stil */
+  .pull-quote {
+    border-left: 3px solid var(--color-orange);
+    padding-left: 1.25rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.375rem;
+    line-height: 1.4;
+    color: var(--color-ink);
   }
 }
 
 /* Scroll reveal */
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
 }
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
-.reveal-delay-1 { transition-delay: 0.12s; }
-.reveal-delay-2 { transition-delay: 0.24s; }
-.reveal-delay-3 { transition-delay: 0.36s; }
+.reveal-delay-1 { transition-delay: 0.08s; }
+.reveal-delay-2 { transition-delay: 0.16s; }
+.reveal-delay-3 { transition-delay: 0.24s; }
+.reveal-delay-4 { transition-delay: 0.32s; }
+.reveal-delay-5 { transition-delay: 0.40s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
