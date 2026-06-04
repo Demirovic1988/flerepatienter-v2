@@ -1,0 +1,302 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Footer from '../../components/Footer.astro';
+
+const CALENDLY = 'https://calendly.com/jatak-flerepatienter/30min';
+const PHONE = '+45 71 900 650';
+const PHONE_HREF = 'tel:+4571900650';
+const EMAIL = 'jatak@flerepatienter.dk';
+const MANAGER_ID = '[INDSÆT BUNICAs MANAGER-ID]';
+
+const steps = [
+  {
+    id: 'aabn-google-ads',
+    title: 'Log ind på Google Ads',
+    body: 'Gå til ads.google.com og log ind på den Google Ads-konto, hvor jeres kampagner ligger. Vælg den rigtige konto øverst, hvis I har adgang til flere.',
+    link: { label: 'ads.google.com', href: 'https://ads.google.com' },
+  },
+  {
+    id: 'adgang-og-sikkerhed',
+    title: 'Åbn "Adgang og sikkerhed"',
+    body: 'Klik på Værktøjer-ikonet øverst i Google Ads. Under Opsætning vælger du "Adgang og sikkerhed". Det er her, al brugeradgang og manager-tilknytning administreres.',
+    placeholder: { slot: 1, label: 'Skærmbillede uploades' },
+  },
+  {
+    id: 'manager-fanen',
+    title: 'Vælg fanen "Managere"',
+    body: 'Skift til fanen Managere. Her ser du de manager-konti, der i dag har adgang til jeres Google Ads-konto. Adgangen skal gives via en manager-tilknytning, ikke som en personlig bruger.',
+    placeholder: { slot: 2, label: 'Skærmbillede uploades' },
+  },
+  {
+    id: 'tilfoej-manager',
+    title: 'Klik på "+" for at tilknytte en manager-konto',
+    body: 'Klik på det blå +-ikon for at sende en ny manager-anmodning. Du får nu et felt, hvor du kan indtaste manager-kontoens ID.',
+    placeholder: { slot: 3, label: 'Skærmbillede uploades' },
+  },
+  {
+    id: 'manager-id',
+    title: 'Indtast BUNICAs manager-ID',
+    body: 'Indtast følgende manager-ID i feltet. ID’et er på formen xxx-xxx-xxxx og identificerer BUNICA i Google Ads.',
+    placeholder: { slot: 4, label: 'Skærmbillede uploades' },
+    managerId: true,
+  },
+  {
+    id: 'send-anmodning',
+    title: 'Send anmodningen',
+    body: 'Klik Send anmodning. BUNICA modtager nu en anmodning i vores manager-konto. Vi godkender den med det samme — typisk inden for samme arbejdsdag.',
+  },
+  {
+    id: 'bekraeft',
+    title: 'Bekræft tilknytningen',
+    body: 'Når BUNICA har godkendt anmodningen, vises tilknytningen som aktiv under Managere. Herefter har vi adgang til at opsætte konvertering, kampagner, målretning og tracking i jeres Google Ads-konto.',
+  },
+];
+---
+
+<Layout
+  title="Deling af Google Ads konto | Flerepatienter"
+  description="Trin-for-trin guide til at give BUNICA adgang til jeres Google Ads-konto via en manager-tilknytning."
+>
+  <main class="bg-paper">
+
+    <!-- Top: breadcrumb + titel -->
+    <section class="pt-28 pb-10 md:pt-36 md:pb-14 border-b border-line">
+      <div class="max-w-6xl mx-auto px-5">
+
+        <nav aria-label="Brødkrumme" class="mb-7" style="font-family: var(--font-sans);">
+          <ol class="flex flex-wrap items-center gap-2 text-sm text-ash">
+            <li><a href="/guides/" class="hover:text-orange transition-colors">Guides</a></li>
+            <li aria-hidden="true" class="text-line">/</li>
+            <li class="text-ink font-medium" aria-current="page">Deling af Google Ads konto</li>
+          </ol>
+        </nav>
+
+        <div class="max-w-3xl">
+          <p class="eyebrow mb-5">Google Ads · Adgang</p>
+          <h1 class="text-4xl sm:text-5xl md:text-[56px] font-medium tracking-tight leading-[1.05]">
+            Deling af <span class="accent">Google Ads</span> konto
+          </h1>
+          <p class="mt-5 text-base text-ash" style="font-family: var(--font-sans);">
+            Estimeret læsetid: ca. 2 min
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Body: TOC + indhold -->
+    <section class="py-14 md:py-20">
+      <div class="max-w-6xl mx-auto px-5 grid gap-10 md:grid-cols-[300px_minmax(0,1fr)] md:gap-12">
+
+        <aside class="md:sticky md:top-28 md:self-start">
+          <nav
+            aria-label="Indholdsfortegnelse"
+            class="toc-card rounded-2xl bg-ink text-white px-6 py-7 md:px-7 md:py-8 relative overflow-hidden"
+          >
+            <ol class="space-y-3 relative z-10" style="font-family: var(--font-sans);">
+              {steps.map((s, i) => (
+                <li>
+                  <a
+                    href={`#${s.id}`}
+                    data-toc-link={s.id}
+                    class="toc-link block text-[15px] leading-snug text-white/55 hover:text-white transition-colors"
+                  >
+                    <span class="toc-num">{i + 1}.</span>{' '}
+                    <span class="toc-label">{s.title}</span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        </aside>
+
+        <article>
+
+          <section class="mb-10">
+            <h2 class="text-3xl md:text-[40px] font-medium mb-5 tracking-tight leading-[1.1]">
+              Deling af Google Ads konto
+            </h2>
+            <p class="text-lg text-ash leading-relaxed max-w-2xl">
+              Guiden her viser, hvordan I giver BUNICA adgang til jeres Google
+              Ads-konto via en manager-tilknytning, så vi kan opsætte og optimere
+              jeres kampagner uden at blive tilføjet som personlige brugere.
+            </p>
+          </section>
+
+          <ol class="space-y-6">
+            {steps.map((s, i) => (
+              <li
+                id={s.id}
+                class="scroll-mt-28 rounded-2xl bg-bone/70 border border-line px-6 py-7 md:px-9 md:py-9"
+              >
+                <h3 class="text-2xl md:text-[28px] font-medium tracking-tight leading-snug mb-4">
+                  {i + 1}. {s.title}
+                </h3>
+
+                <p class="text-ink/85 leading-relaxed max-w-prose">
+                  {s.body}
+                  {s.link && (
+                    <>
+                      {' '}
+                      <a href={s.link.href} target="_blank" rel="noopener noreferrer" class="text-orange font-semibold underline underline-offset-4 decoration-2">
+                        {s.link.label}
+                      </a>
+                    </>
+                  )}
+                </p>
+
+                {s.managerId && (
+                  <div class="mt-5 rounded-md border border-orange/30 bg-cream/40 px-5 py-4">
+                    <p class="text-xs font-semibold uppercase tracking-[0.15em] text-orange mb-1.5" style="font-family: var(--font-sans);">Manager-ID</p>
+                    <code class="block text-lg font-semibold text-ink select-all" style="font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;">
+                      {MANAGER_ID}
+                    </code>
+                  </div>
+                )}
+
+                {s.placeholder && (
+                  <figure class="mt-6">
+                    <div
+                      class="w-full aspect-[16/9] rounded-lg border border-line bg-bone flex items-center justify-center text-ash text-sm"
+                      style="font-family: var(--font-sans);"
+                      role="img"
+                      aria-label={`Billede ${s.placeholder.slot} – ${s.placeholder.label}`}
+                    >
+                      <span>Billede {s.placeholder.slot} – {s.placeholder.label}</span>
+                    </div>
+                  </figure>
+                )}
+              </li>
+            ))}
+          </ol>
+
+        </article>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-ink py-24 md:py-32 relative overflow-hidden">
+      <div aria-hidden="true" class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-0 right-0 w-[480px] h-[480px] rounded-full bg-orange/10 blur-3xl translate-x-1/3 -translate-y-1/4"></div>
+        <div class="absolute bottom-0 left-0 w-[360px] h-[360px] rounded-full bg-orange/5 blur-3xl -translate-x-1/4 translate-y-1/4"></div>
+      </div>
+
+      <div class="max-w-3xl mx-auto px-5 relative z-10 text-center">
+        <p class="eyebrow mb-6" style="color: #E8915B;">Næste skridt</p>
+        <h2 class="text-4xl md:text-5xl font-medium text-white mb-6 tracking-tight leading-[1.05]">
+          Klar til <span class="accent" style="color: #E8915B;">flere patienter?</span>
+        </h2>
+        <p class="text-white/75 text-lg max-w-xl mx-auto mb-10 leading-relaxed">
+          Book et gratis strategiopkald, så kigger vi på hullerne i jeres
+          markedsføring og patientrejse.
+        </p>
+
+        <div class="flex justify-center mb-12">
+          <a
+            href={CALENDLY}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-primary text-base px-8 py-4"
+          >
+            Book gratis strategiopkald
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+          <a
+            href={PHONE_HREF}
+            class="group flex items-center gap-4 bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-orange/40 rounded-lg px-5 py-4 text-left transition-all duration-200"
+            aria-label={`Ring til ${PHONE}`}
+          >
+            <div class="w-10 h-10 rounded bg-orange/15 flex items-center justify-center shrink-0 group-hover:bg-orange/25 transition-colors">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4621A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.12 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.37a16 16 0 0 0 5.72 5.72l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-white/50 text-[11px] font-semibold uppercase tracking-[0.15em] mb-0.5" style="font-family: var(--font-sans);">Telefon</div>
+              <div class="text-white font-semibold text-[15px]" style="font-family: var(--font-sans);">{PHONE}</div>
+            </div>
+          </a>
+
+          <a
+            href={`mailto:${EMAIL}`}
+            class="group flex items-center gap-4 bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-orange/40 rounded-lg px-5 py-4 text-left transition-all duration-200"
+            aria-label={`Send email til ${EMAIL}`}
+          >
+            <div class="w-10 h-10 rounded bg-orange/15 flex items-center justify-center shrink-0 group-hover:bg-orange/25 transition-colors">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4621A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-white/50 text-[11px] font-semibold uppercase tracking-[0.15em] mb-0.5" style="font-family: var(--font-sans);">E-mail</div>
+              <div class="text-white font-semibold text-[15px]" style="font-family: var(--font-sans);">{EMAIL}</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .toc-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 18% 0%, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0) 45%),
+      radial-gradient(circle at 95% 100%, rgba(212,98,26,0.07) 0%, rgba(212,98,26,0) 60%);
+    pointer-events: none;
+  }
+
+  .toc-num {
+    color: rgba(255,255,255,0.45);
+    font-weight: 500;
+    margin-right: 0.15rem;
+    transition: color 200ms ease;
+  }
+
+  .toc-link:hover .toc-num,
+  .toc-link.is-active .toc-num {
+    color: #E8915B;
+  }
+
+  .toc-link.is-active {
+    color: #fff;
+    font-weight: 600;
+  }
+</style>
+
+<script>
+  const links = document.querySelectorAll<HTMLAnchorElement>('.toc-link');
+  const ids = Array.from(links).map((a) => a.dataset.tocLink!).filter(Boolean);
+  const sections = ids
+    .map((id) => document.getElementById(id))
+    .filter((el): el is HTMLElement => !!el);
+
+  const setActive = (id: string | null) => {
+    links.forEach((a) => {
+      a.classList.toggle('is-active', a.dataset.tocLink === id);
+    });
+  };
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const visible = entries
+        .filter((e) => e.isIntersecting)
+        .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+      if (visible) setActive(visible.target.id);
+    },
+    { rootMargin: '-30% 0px -60% 0px', threshold: 0 }
+  );
+
+  sections.forEach((s) => observer.observe(s));
+</script>
