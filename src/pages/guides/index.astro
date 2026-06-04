@@ -1,0 +1,77 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Footer from '../../components/Footer.astro';
+
+const guides = [
+  {
+    title: 'Deling af Meta Business aktiviteter',
+    excerpt:
+      'Sådan deler du jeres Facebook-side, annoncekonto og Instagram-konto med Flerepatienter — uden at tilføje os som interne brugere.',
+    href: '/guides/deling-af-meta-business/',
+    readingTime: 'ca. 2 min',
+    eyebrow: 'Meta · Adgang',
+  },
+];
+---
+
+<Layout
+  title="Guides | Flerepatienter.dk"
+  description="Praktiske trin-for-trin guides til jeres marketing-setup — Meta, Google og tracking forklaret enkelt."
+>
+  <main class="bg-paper">
+
+    <!-- Hero -->
+    <section class="pt-28 pb-16 md:pt-36 md:pb-20 relative overflow-hidden">
+      <div aria-hidden="true" class="absolute inset-0 pointer-events-none">
+        <div class="absolute -top-40 right-0 w-[640px] h-[640px] rounded-full bg-cream/50 blur-3xl translate-x-1/3"></div>
+      </div>
+
+      <div class="max-w-3xl mx-auto px-5 relative z-10 text-center">
+        <p class="reveal eyebrow mb-6">Guides</p>
+        <h1 class="reveal reveal-delay-1 text-4xl sm:text-5xl md:text-6xl font-medium mb-6 tracking-tight leading-[1.05]">
+          Praktiske guides til <span class="accent">jeres setup.</span>
+        </h1>
+        <p class="reveal reveal-delay-2 text-lg md:text-xl text-ash leading-relaxed max-w-2xl mx-auto">
+          Trin-for-trin gennemgange af de opgaver vi oftest beder klinikker om — så
+          I kan komme videre uden at vente på support.
+        </p>
+      </div>
+    </section>
+
+    <!-- Grid -->
+    <section class="pb-24 md:pb-32">
+      <div class="max-w-5xl mx-auto px-5">
+        <ul class="grid gap-6 md:grid-cols-2">
+          {guides.map((g) => (
+            <li class="reveal">
+              <a
+                href={g.href}
+                class="group flex h-full flex-col justify-between gap-6 rounded-lg border border-line bg-bone p-7 transition-all duration-200 hover:border-orange/40 hover:shadow-[0_8px_30px_rgba(212,98,26,0.08)]"
+              >
+                <div>
+                  <p class="eyebrow-muted mb-4">{g.eyebrow}</p>
+                  <h2 class="text-2xl md:text-[26px] font-medium mb-3 tracking-tight leading-snug group-hover:text-orange transition-colors">
+                    {g.title}
+                  </h2>
+                  <p class="text-ash leading-relaxed">{g.excerpt}</p>
+                </div>
+                <div class="flex items-center justify-between pt-2">
+                  <span class="text-xs text-ash" style="font-family: var(--font-sans);">Estimeret læsetid: {g.readingTime}</span>
+                  <span class="inline-flex items-center gap-1.5 text-sm font-semibold text-orange" style="font-family: var(--font-sans);">
+                    Læs guide
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
