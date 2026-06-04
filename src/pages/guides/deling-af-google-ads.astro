@@ -5,57 +5,33 @@ import Footer from '../../components/Footer.astro';
 const CALENDLY = 'https://calendly.com/jatak-flerepatienter/30min';
 const PHONE = '+45 71 900 650';
 const PHONE_HREF = 'tel:+4571900650';
-const EMAIL = 'jatak@flerepatienter.dk';
-const MANAGER_ID = '[INDSÆT BUNICAs MANAGER-ID]';
+const EMAIL = 'marketing@flerepatienter.dk';
 
 const steps = [
   {
-    id: 'aabn-google-ads',
-    title: 'Log ind på Google Ads',
-    body: 'Gå til ads.google.com og log ind på den Google Ads-konto, hvor jeres kampagner ligger. Vælg den rigtige konto øverst, hvis I har adgang til flere.',
-    link: { label: 'ads.google.com', href: 'https://ads.google.com' },
+    id: 'find-konto-id',
+    title: 'Find dit Google Ads-konto-ID',
+    body: 'Log ind på din Google Ads-konto. Øverst til højre finder du kontoikonet og i toppen af siden vises dit konto-ID.',
+    image: { src: '/guides/google-ads/01-find-konto-id.png', alt: 'Google Ads – konto-ID øverst i toppen', slot: 1 },
   },
   {
-    id: 'adgang-og-sikkerhed',
-    title: 'Åbn "Adgang og sikkerhed"',
-    body: 'Klik på Værktøjer-ikonet øverst i Google Ads. Under Opsætning vælger du "Adgang og sikkerhed". Det er her, al brugeradgang og manager-tilknytning administreres.',
-    placeholder: { slot: 1, label: 'Skærmbillede uploades' },
+    id: 'kopier-konto-id',
+    title: 'Kopiér konto-ID’et',
+    body: 'Konto-ID’et består af tre talgrupper i formatet XXX-XXX-XXXX. Dette nummer identificerer jeres annoncekonto.',
+    image: { src: '/guides/google-ads/02-kopier-konto-id.png', alt: 'Google Ads – kopiér konto-ID fra dropdown', slot: 2 },
   },
   {
-    id: 'manager-fanen',
-    title: 'Vælg fanen "Managere"',
-    body: 'Skift til fanen Managere. Her ser du de manager-konti, der i dag har adgang til jeres Google Ads-konto. Adgangen skal gives via en manager-tilknytning, ikke som en personlig bruger.',
-    placeholder: { slot: 2, label: 'Skærmbillede uploades' },
-  },
-  {
-    id: 'tilfoej-manager',
-    title: 'Klik på "+" for at tilknytte en manager-konto',
-    body: 'Klik på det blå +-ikon for at sende en ny manager-anmodning. Du får nu et felt, hvor du kan indtaste manager-kontoens ID.',
-    placeholder: { slot: 3, label: 'Skærmbillede uploades' },
-  },
-  {
-    id: 'manager-id',
-    title: 'Indtast BUNICAs manager-ID',
-    body: 'Indtast følgende manager-ID i feltet. ID’et er på formen xxx-xxx-xxxx og identificerer BUNICA i Google Ads.',
-    placeholder: { slot: 4, label: 'Skærmbillede uploades' },
-    managerId: true,
-  },
-  {
-    id: 'send-anmodning',
-    title: 'Send anmodningen',
-    body: 'Klik Send anmodning. BUNICA modtager nu en anmodning i vores manager-konto. Vi godkender den med det samme — typisk inden for samme arbejdsdag.',
-  },
-  {
-    id: 'bekraeft',
-    title: 'Bekræft tilknytningen',
-    body: 'Når BUNICA har godkendt anmodningen, vises tilknytningen som aktiv under Managere. Herefter har vi adgang til at opsætte konvertering, kampagner, målretning og tracking i jeres Google Ads-konto.',
+    id: 'send-konto-id',
+    title: 'Send konto-ID til FLEREPATIENTER',
+    body: 'Send konto-ID’et til marketing@flerepatienter.dk. Når vi har modtaget ID’et, kan vi anmode om adgang til kontoen og hjælpe med opsætning, struktur og optimering af jeres Google Ads-annoncering.',
+    emailLink: true,
   },
 ];
 ---
 
 <Layout
   title="Deling af Google Ads konto | Flerepatienter"
-  description="Trin-for-trin guide til at give BUNICA adgang til jeres Google Ads-konto via en manager-tilknytning."
+  description="Trin-for-trin guide: find dit Google Ads-konto-ID og send det til Flerepatienter, så vi kan anmode om adgang."
 >
   <main class="bg-paper">
 
@@ -77,7 +53,7 @@ const steps = [
             Deling af <span class="accent">Google Ads</span> konto
           </h1>
           <p class="mt-5 text-base text-ash" style="font-family: var(--font-sans);">
-            Estimeret læsetid: ca. 2 min
+            Estimeret læsetid: ca. 1 min
           </p>
         </div>
       </div>
@@ -113,12 +89,12 @@ const steps = [
 
           <section class="mb-10">
             <h2 class="text-3xl md:text-[40px] font-medium mb-5 tracking-tight leading-[1.1]">
-              Deling af Google Ads konto
+              Deling af Google Ads-konto
             </h2>
             <p class="text-lg text-ash leading-relaxed max-w-2xl">
-              Guiden her viser, hvordan I giver BUNICA adgang til jeres Google
-              Ads-konto via en manager-tilknytning, så vi kan opsætte og optimere
-              jeres kampagner uden at blive tilføjet som personlige brugere.
+              Guiden her viser, hvordan I finder jeres Google Ads-konto-ID og sender
+              det til Flerepatienter, så vi kan anmode om adgang og hjælpe med opsætning,
+              struktur og optimering af jeres annoncering.
             </p>
           </section>
 
@@ -133,36 +109,25 @@ const steps = [
                 </h3>
 
                 <p class="text-ink/85 leading-relaxed max-w-prose">
-                  {s.body}
-                  {s.link && (
+                  {s.emailLink ? (
                     <>
-                      {' '}
-                      <a href={s.link.href} target="_blank" rel="noopener noreferrer" class="text-orange font-semibold underline underline-offset-4 decoration-2">
-                        {s.link.label}
-                      </a>
+                      Send konto-ID&rsquo;et til{' '}
+                      <a href={`mailto:${EMAIL}`} class="text-orange font-semibold underline underline-offset-4 decoration-2">{EMAIL}</a>
+                      . Når vi har modtaget ID&rsquo;et, kan vi anmode om adgang til kontoen og hjælpe med opsætning, struktur og optimering af jeres Google Ads-annoncering.
                     </>
+                  ) : (
+                    s.body
                   )}
                 </p>
 
-                {s.managerId && (
-                  <div class="mt-5 rounded-md border border-orange/30 bg-cream/40 px-5 py-4">
-                    <p class="text-xs font-semibold uppercase tracking-[0.15em] text-orange mb-1.5" style="font-family: var(--font-sans);">Manager-ID</p>
-                    <code class="block text-lg font-semibold text-ink select-all" style="font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;">
-                      {MANAGER_ID}
-                    </code>
-                  </div>
-                )}
-
-                {s.placeholder && (
+                {s.image && (
                   <figure class="mt-6">
-                    <div
-                      class="w-full aspect-[16/9] rounded-lg border border-line bg-bone flex items-center justify-center text-ash text-sm"
-                      style="font-family: var(--font-sans);"
-                      role="img"
-                      aria-label={`Billede ${s.placeholder.slot} – ${s.placeholder.label}`}
-                    >
-                      <span>Billede {s.placeholder.slot} – {s.placeholder.label}</span>
-                    </div>
+                    <img
+                      src={s.image.src}
+                      alt={s.image.alt}
+                      loading="lazy"
+                      class="w-full rounded-lg border border-line shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
+                    />
                   </figure>
                 )}
               </li>
