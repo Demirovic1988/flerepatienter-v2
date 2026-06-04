@@ -170,11 +170,29 @@ const steps = [
                 )}
 
                 {s.partnerId && (
-                  <div class="mt-5 rounded-md border border-orange/30 bg-cream/40 px-5 py-4">
-                    <p class="text-xs font-semibold uppercase tracking-[0.15em] text-orange mb-1.5" style="font-family: var(--font-sans);">Partner-ID</p>
-                    <code class="block text-lg font-semibold text-ink select-all" style="font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;">
-                      {PARTNER_ID}
-                    </code>
+                  <div class="mt-5 rounded-md border border-orange/30 bg-cream/40 px-5 py-4 flex items-center justify-between gap-4 flex-wrap">
+                    <div>
+                      <p class="text-xs font-semibold uppercase tracking-[0.15em] text-orange mb-1.5" style="font-family: var(--font-sans);">Partner-ID</p>
+                      <code class="block text-lg font-semibold text-ink select-all" style="font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;">
+                        {PARTNER_ID}
+                      </code>
+                    </div>
+                    <button
+                      type="button"
+                      class="copy-btn inline-flex items-center gap-2 rounded-md bg-orange text-white px-4 py-2 text-sm font-semibold hover:bg-orange-deep transition-colors"
+                      style="font-family: var(--font-sans);"
+                      data-copy-value={PARTNER_ID}
+                      aria-label="Kopiér partner-ID"
+                    >
+                      <svg class="icon-copy" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                      </svg>
+                      <svg class="icon-check hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polyline points="20 6 9 17 4 12"/>
+                      </svg>
+                      <span class="copy-label">Kopiér</span>
+                    </button>
                   </div>
                 )}
 
@@ -324,4 +342,33 @@ const steps = [
   );
 
   sections.forEach((s) => observer.observe(s));
+
+  document.querySelectorAll<HTMLButtonElement>('.copy-btn').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const value = btn.dataset.copyValue ?? '';
+      try {
+        await navigator.clipboard.writeText(value);
+      } catch {
+        const ta = document.createElement('textarea');
+        ta.value = value;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+      const iconCopy = btn.querySelector('.icon-copy');
+      const iconCheck = btn.querySelector('.icon-check');
+      const label = btn.querySelector('.copy-label');
+      iconCopy?.classList.add('hidden');
+      iconCheck?.classList.remove('hidden');
+      if (label) label.textContent = 'Kopieret';
+      setTimeout(() => {
+        iconCopy?.classList.remove('hidden');
+        iconCheck?.classList.add('hidden');
+        if (label) label.textContent = 'Kopiér';
+      }, 1800);
+    });
+  });
 </script>
