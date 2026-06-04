@@ -58,8 +58,6 @@ const steps = [
   },
 ];
 
-const shareUrl = 'https://flerepatienter.dk/guides/deling-af-meta-business/';
-const linkedInShare = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
 ---
 
 <Layout
@@ -81,30 +79,14 @@ const linkedInShare = `https://www.linkedin.com/sharing/share-offsite/?url=${enc
           </ol>
         </nav>
 
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-          <div class="max-w-3xl">
-            <p class="eyebrow mb-5">Meta · Adgang</p>
-            <h1 class="text-4xl sm:text-5xl md:text-[56px] font-medium tracking-tight leading-[1.05]">
-              Deling af <span class="accent">Meta Business</span> aktiviteter
-            </h1>
-            <p class="mt-5 text-base text-ash" style="font-family: var(--font-sans);">
-              Estimeret læsetid: ca. 2 min
-            </p>
-          </div>
-
-          <a
-            href={linkedInShare}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 self-start md:self-end rounded-md border border-line bg-white px-4 py-2.5 text-sm font-semibold text-ink hover:border-orange/40 hover:text-orange transition-colors"
-            style="font-family: var(--font-sans);"
-            aria-label="Del på LinkedIn"
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.4v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/>
-            </svg>
-            Del på LinkedIn
-          </a>
+        <div class="max-w-3xl">
+          <p class="eyebrow mb-5">Meta · Adgang</p>
+          <h1 class="text-4xl sm:text-5xl md:text-[56px] font-medium tracking-tight leading-[1.05]">
+            Deling af <span class="accent">Meta Business</span> aktiviteter
+          </h1>
+          <p class="mt-5 text-base text-ash" style="font-family: var(--font-sans);">
+            Estimeret læsetid: ca. 2 min
+          </p>
         </div>
       </div>
     </section>
