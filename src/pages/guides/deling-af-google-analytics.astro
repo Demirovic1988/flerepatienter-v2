@@ -7,121 +7,46 @@ const PHONE = '+45 81 530 540';
 const PHONE_HREF = 'tel:+4581530540';
 const EMAIL = 'marketing@flerepatienter.dk';
 
-const sections = [
+const steps = [
   {
-    title: 'Opret Google Analytics',
-    steps: [
-      {
-        id: 'log-ind-opret',
-        title: 'Log ind på Google Analytics',
-        body: 'Gå til analytics.google.com og log ind med jeres Google-konto. Hvis I allerede har en konto, kan I springe direkte til afsnittet "Adgang til Google Analytics".',
-        link: { label: 'analytics.google.com', href: 'https://analytics.google.com' },
-      },
-      {
-        id: 'start-opsaetningen',
-        title: 'Start opsætningen af en ny konto',
-        body: 'Klik på Admin (tandhjul-ikonet) nederst til venstre, og vælg "Create" → "Account" for at starte opsætningen.',
-        placeholder: true,
-      },
-      {
-        id: 'indtast-oplysninger',
-        title: 'Indtast oplysninger om kontoen',
-        body: 'Giv kontoen et navn (typisk virksomhedens navn) og vælg, hvilke data Google må dele med deres øvrige services.',
-        placeholder: true,
-      },
-      {
-        id: 'navngiv-property',
-        title: 'Navngiv din property',
-        body: 'Opret en property under kontoen. Navngiv den, så I let kan skelne mellem flere websites eller apps senere.',
-        placeholder: true,
-      },
-      {
-        id: 'land-og-valuta',
-        title: 'Vælg land og valuta',
-        body: 'Angiv jeres lands tidszone og den valuta, I bruger til at tracke konverteringsværdier.',
-        placeholder: true,
-      },
-      {
-        id: 'branche',
-        title: 'Angiv branche og virksomhedsstørrelse',
-        body: 'Vælg den branche, der bedst beskriver jeres virksomhed, samt jeres størrelseskategori. Det bruges af Google til standardrapporter.',
-        placeholder: true,
-      },
-      {
-        id: 'maal',
-        title: 'Vælg virksomhedens mål',
-        body: 'Markér de mål, der er vigtigst for jer (fx leads, online-salg, brandbevidsthed). Det styrer, hvilke rapporter Google fremhæver.',
-        placeholder: true,
-      },
-      {
-        id: 'accepter-vilkaar',
-        title: 'Accepter Googles vilkår',
-        body: 'Læs og accepter Googles servicevilkår og databehandleraftalen for Google Analytics.',
-        placeholder: true,
-      },
-      {
-        id: 'platform',
-        title: 'Vælg platform for dataindsamling',
-        body: 'Vælg "Web" som datakilde. Indtast jeres domæne (fx flerepatienter.dk) og giv datastrømmen et navn.',
-        placeholder: true,
-      },
-      {
-        id: 'datastream',
-        title: 'Opret din datastream',
-        body: 'Når datastrømmen er oprettet, modtager I et Measurement ID (G-XXXXXXX), som skal sættes ind i jeres website — fx via Google Tag Manager eller direkte i koden.',
-        placeholder: true,
-      },
-    ],
+    id: 'log-ind-analytics',
+    title: 'Log ind i Analytics',
+    body: 'Gå til analytics.google.com/analytics/web og log ind på den konto, hvor din property er oprettet.',
+    link: { label: 'analytics.google.com/analytics/web', href: 'https://analytics.google.com/analytics/web' },
   },
   {
-    title: 'Adgang til Google Analytics',
-    steps: [
-      {
-        id: 'log-ind-analytics',
-        title: 'Log ind i Analytics',
-        body: 'Gå til analytics.google.com/analytics/web og log ind på den konto, hvor din property er oprettet.',
-        link: { label: 'analytics.google.com/analytics/web', href: 'https://analytics.google.com/analytics/web' },
-      },
-      {
-        id: 'admin-panel',
-        title: 'Åbn administrationspanelet',
-        body: 'Klik på Administrator nederst i venstre side. Her finder du alle indstillinger for konto, property og brugeradgang.',
-        placeholder: true,
-      },
-      {
-        id: 'brugeradministration',
-        title: 'Gå til brugeradministration',
-        body: 'Under konto- eller propertyniveau finder du menuen Access Management eller Brugeradministration. Her kan du se og administrere, hvem der har adgang til Analytics.',
-        placeholder: true,
-      },
-      {
-        id: 'tilfoej-bruger',
-        title: 'Tilføj en ny bruger',
-        body: 'Klik på Add users eller Tilføj bruger. Her kan du invitere nye brugere til kontoen.',
-        placeholder: true,
-      },
-      {
-        id: 'opret-adgang-flerepatienter',
-        title: 'Opret adgang til FLEREPATIENTER',
-        body: 'Indtast vores mailadresse i feltet. Vælg den rette rolle, som oftest er Editor, så vi kan opsætte målinger og analysere data.',
-        placeholder: true,
-        emailLink: true,
-      },
-      {
-        id: 'gem-send',
-        title: 'Gem og send invitationen',
-        body: 'Klik på Add for at tilføje brugeren. Herefter får vi adgang til kontoen og kan hjælpe med opsætning, analyse og optimering af jeres data.',
-      },
-    ],
+    id: 'admin-panel',
+    title: 'Åbn administrationspanelet',
+    body: 'Klik på Administrator nederst i venstre side. Her finder du alle indstillinger for konto, property og brugeradgang.',
+    placeholder: true,
+  },
+  {
+    id: 'brugeradministration',
+    title: 'Gå til brugeradministration',
+    body: 'Under konto- eller propertyniveau finder du menuen Access Management eller Brugeradministration. Her kan du se og administrere, hvem der har adgang til Analytics.',
+    placeholder: true,
+  },
+  {
+    id: 'tilfoej-bruger',
+    title: 'Tilføj en ny bruger',
+    body: 'Klik på Add users eller Tilføj bruger. Her kan du invitere nye brugere til kontoen.',
+    placeholder: true,
+  },
+  {
+    id: 'opret-adgang-flerepatienter',
+    title: 'Opret adgang til FLEREPATIENTER',
+    body: 'Indtast vores mailadresse i feltet. Vælg den rette rolle, som oftest er Editor, så vi kan opsætte målinger og analysere data.',
+    placeholder: true,
+    emailLink: true,
+  },
+  {
+    id: 'gem-send',
+    title: 'Gem og send invitationen',
+    body: 'Klik på Add for at tilføje brugeren. Herefter får vi adgang til kontoen og kan hjælpe med opsætning, analyse og optimering af jeres data.',
   },
 ];
 
-let counter = 0;
-const numberedSections = sections.map((section) => ({
-  ...section,
-  steps: section.steps.map((step) => ({ ...step, number: ++counter })),
-}));
-const totalSteps = counter;
+const totalSteps = steps.length;
 ---
 
 <Layout
@@ -142,12 +67,12 @@ const totalSteps = counter;
         </nav>
 
         <div class="max-w-3xl">
-          <p class="eyebrow mb-5">Google Analytics · Opsætning &amp; Adgang</p>
+          <p class="eyebrow mb-5">Google Analytics · Adgang</p>
           <h1 class="text-4xl sm:text-5xl md:text-[56px] font-medium tracking-tight leading-[1.05]">
             Deling af <span class="accent">Google Analytics</span> adgang
           </h1>
           <p class="mt-5 text-base text-ash" style="font-family: var(--font-sans);">
-            Estimeret læsetid: ca. 4 min · {totalSteps} trin
+            Estimeret læsetid: ca. 2 min · {totalSteps} trin
           </p>
         </div>
       </div>
@@ -161,27 +86,20 @@ const totalSteps = counter;
             aria-label="Indholdsfortegnelse"
             class="toc-card rounded-2xl bg-ink text-white px-6 py-7 md:px-7 md:py-8 relative overflow-hidden"
           >
-            <div class="space-y-6 relative z-10" style="font-family: var(--font-sans);">
-              {numberedSections.map((section) => (
-                <div>
-                  <p class="toc-section text-white font-semibold mb-3 text-[14px] tracking-tight">{section.title}</p>
-                  <ol class="space-y-3">
-                    {section.steps.map((s) => (
-                      <li>
-                        <a
-                          href={`#${s.id}`}
-                          data-toc-link={s.id}
-                          class="toc-link block text-[15px] leading-snug text-white/55 hover:text-white transition-colors"
-                        >
-                          <span class="toc-num">{s.number}.</span>{' '}
-                          <span class="toc-label">{s.title}</span>
-                        </a>
-                      </li>
-                    ))}
-                  </ol>
-                </div>
+            <ol class="space-y-3 relative z-10" style="font-family: var(--font-sans);">
+              {steps.map((s, i) => (
+                <li>
+                  <a
+                    href={`#${s.id}`}
+                    data-toc-link={s.id}
+                    class="toc-link block text-[15px] leading-snug text-white/55 hover:text-white transition-colors"
+                  >
+                    <span class="toc-num">{i + 1}.</span>{' '}
+                    <span class="toc-label">{s.title}</span>
+                  </a>
+                </li>
               ))}
-            </div>
+            </ol>
           </nav>
         </aside>
 
@@ -189,84 +107,79 @@ const totalSteps = counter;
 
           <section class="mb-10">
             <h2 class="text-3xl md:text-[40px] font-medium mb-5 tracking-tight leading-[1.1]">
-              Deling af Google Analytics
+              Adgang til Google Analytics
             </h2>
             <p class="text-lg text-ash leading-relaxed max-w-2xl">
-              Guiden her viser, hvordan I opretter Google Analytics fra bunden — og
-              hvordan I bagefter giver Flerepatienter adgang til jeres property, så
-              vi kan opsætte konverteringer, måling og rapporter.
+              Guiden her viser, hvordan I giver Flerepatienter adgang til jeres
+              Google Analytics-property, så vi kan opsætte konverteringer, måling
+              og rapporter — uden at I behøver at dele jeres egen Google-bruger.
             </p>
           </section>
 
-          {numberedSections.map((section) => (
-            <div class="mb-10">
-              <h2 class="text-[26px] md:text-3xl font-medium tracking-tight mb-6">{section.title}</h2>
-              <ol class="space-y-6">
-                {section.steps.map((s) => (
-                  <li
-                    id={s.id}
-                    class="scroll-mt-28 rounded-2xl bg-bone/70 border border-line px-6 py-7 md:px-9 md:py-9"
-                  >
-                    <h3 class="text-2xl md:text-[28px] font-medium tracking-tight leading-snug mb-4">
-                      {s.number}. {s.title}
-                    </h3>
+          <ol class="space-y-6">
+            {steps.map((s, i) => (
+              <li
+                id={s.id}
+                class="scroll-mt-28 rounded-2xl bg-bone/70 border border-line px-6 py-7 md:px-9 md:py-9"
+              >
+                <h3 class="text-2xl md:text-[28px] font-medium tracking-tight leading-snug mb-4">
+                  {i + 1}. {s.title}
+                </h3>
 
-                    <p class="text-ink/85 leading-relaxed max-w-prose">
-                      {s.body}
-                      {s.link && (
-                        <>
-                          {' '}
-                          <a href={s.link.href} target="_blank" rel="noopener noreferrer" class="text-orange font-semibold underline underline-offset-4 decoration-2">
-                            {s.link.label}
-                          </a>
-                        </>
-                      )}
-                    </p>
+                <p class="text-ink/85 leading-relaxed max-w-prose">
+                  {s.body}
+                  {s.link && (
+                    <>
+                      {' '}
+                      <a href={s.link.href} target="_blank" rel="noopener noreferrer" class="text-orange font-semibold underline underline-offset-4 decoration-2">
+                        {s.link.label}
+                      </a>
+                    </>
+                  )}
+                </p>
 
-                    {s.emailLink && (
-                      <div class="mt-5 rounded-md border border-orange/30 bg-cream/40 px-5 py-4 flex items-center justify-between gap-4 flex-wrap">
-                        <div>
-                          <p class="text-xs font-semibold uppercase tracking-[0.15em] text-orange mb-1.5" style="font-family: var(--font-sans);">E-mail</p>
-                          <code class="block text-lg font-semibold text-ink select-all" style="font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;">
-                            {EMAIL}
-                          </code>
-                        </div>
-                        <button
-                          type="button"
-                          class="copy-btn inline-flex items-center gap-2 rounded-md bg-orange text-white px-4 py-2 text-sm font-semibold hover:bg-orange-deep transition-colors"
-                          style="font-family: var(--font-sans);"
-                          data-copy-value={EMAIL}
-                          aria-label="Kopiér e-mail"
-                        >
-                          <svg class="icon-copy" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-                          </svg>
-                          <svg class="icon-check hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <polyline points="20 6 9 17 4 12"/>
-                          </svg>
-                          <span class="copy-label">Kopiér</span>
-                        </button>
-                      </div>
-                    )}
+                {s.emailLink && (
+                  <div class="mt-5 rounded-md border border-orange/30 bg-cream/40 px-5 py-4 flex items-center justify-between gap-4 flex-wrap">
+                    <div>
+                      <p class="text-xs font-semibold uppercase tracking-[0.15em] text-orange mb-1.5" style="font-family: var(--font-sans);">E-mail</p>
+                      <code class="block text-lg font-semibold text-ink select-all" style="font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;">
+                        {EMAIL}
+                      </code>
+                    </div>
+                    <button
+                      type="button"
+                      class="copy-btn inline-flex items-center gap-2 rounded-md bg-orange text-white px-4 py-2 text-sm font-semibold hover:bg-orange-deep transition-colors"
+                      style="font-family: var(--font-sans);"
+                      data-copy-value={EMAIL}
+                      aria-label="Kopiér e-mail"
+                    >
+                      <svg class="icon-copy" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                      </svg>
+                      <svg class="icon-check hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polyline points="20 6 9 17 4 12"/>
+                      </svg>
+                      <span class="copy-label">Kopiér</span>
+                    </button>
+                  </div>
+                )}
 
-                    {s.placeholder && (
-                      <figure class="mt-6">
-                        <div
-                          class="w-full aspect-[16/9] rounded-lg border border-line bg-bone flex items-center justify-center text-ash text-sm"
-                          style="font-family: var(--font-sans);"
-                          role="img"
-                          aria-label={`Billede ${s.number} – Skærmbillede uploades`}
-                        >
-                          <span>Billede {s.number} – Skærmbillede uploades</span>
-                        </div>
-                      </figure>
-                    )}
-                  </li>
-                ))}
-              </ol>
-            </div>
-          ))}
+                {s.placeholder && (
+                  <figure class="mt-6">
+                    <div
+                      class="w-full aspect-[16/9] rounded-lg border border-line bg-bone flex items-center justify-center text-ash text-sm"
+                      style="font-family: var(--font-sans);"
+                      role="img"
+                      aria-label={`Billede ${i + 1} – Skærmbillede uploades`}
+                    >
+                      <span>Billede {i + 1} – Skærmbillede uploades</span>
+                    </div>
+                  </figure>
+                )}
+              </li>
+            ))}
+          </ol>
 
         </article>
       </div>
