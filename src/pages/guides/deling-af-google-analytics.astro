@@ -18,7 +18,7 @@ const steps = [
     id: 'admin-panel',
     title: 'Åbn administrationspanelet',
     body: 'Klik på Administrator nederst i venstre side. Her finder du alle indstillinger for konto, property og brugeradgang.',
-    placeholder: true,
+    image: { src: '/guides/google-analytics/01-admin-panel.webp', alt: 'Google Analytics – Administrator-ikonet nederst i venstre side' },
   },
   {
     id: 'brugeradministration',
@@ -163,6 +163,17 @@ const totalSteps = steps.length;
                       <span class="copy-label">Kopiér</span>
                     </button>
                   </div>
+                )}
+
+                {s.image && (
+                  <figure class="mt-6">
+                    <img
+                      src={s.image.src}
+                      alt={s.image.alt}
+                      loading="lazy"
+                      class="w-full rounded-lg border border-line shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
+                    />
+                  </figure>
                 )}
 
                 {s.placeholder && (
